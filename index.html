@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gedebok Mantap - Keripik Pelepah Pisang Renyah & Gurih</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bananaYellow: '#FACC15',
+                        bananaDark: '#CA8A04',
+                        bananaLight: '#FEF08A',
+                        leafGreen: '#166534',
+                        leafLight: '#DCFCE7',
+                        leafDark: '#14532D',
+                        chocoBrown: '#78350F',
+                        chocoLight: '#FDE68A',
+                        chocoDark: '#451A03'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(120, 53, 15, 0.15), 0 8px 10px -6px rgba(120, 53, 15, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-amber-50/50 text-slate-800 antialiased selection:bg-bananaYellow selection:text-chocoDark">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-leafDark/95 backdrop-blur-md text-white shadow-md border-b border-leafGreen/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-11 h-11 bg-bananaYellow rounded-full flex items-center justify-center text-chocoDark font-black text-xl shadow-inner border-2 border-amber-200">
+                        🍌
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-bananaYellow">Gedebok Mantap</span>
+                        <p class="text-xs text-leafLight/80 tracking-wide font-medium">Dari Limbah Jadi Berkah</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu Links -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <button onclick="switchTab('beranda')" class="nav-btn text-bananaYellow transition hover:text-bananaLight pb-1 border-b-2 border-bananaYellow">Beranda</button>
+                    <button onclick="switchTab('produk')" class="nav-btn text-leafLight/90 hover:text-bananaYellow transition pb-1 border-b-2 border-transparent">Daftar Produk</button>
+                    <button onclick="switchTab('checkout')" class="nav-btn text-leafLight/90 hover:text-bananaYellow transition pb-1 border-b-2 border-transparent">Pesan Instan</button>
+                    <button onclick="switchTab('katering')" class="nav-btn text-leafLight/90 hover:text-bananaYellow transition pb-1 border-b-2 border-transparent">Pesan Berjadwal / DP</button>
+                </div>
+
+                <!-- Social & Contact Quick Actions -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <a href="https://instagram.com/gedebokmantap" target="_blank" class="bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white p-2.5 rounded-full hover:opacity-90 transition shadow-md" title="Instagram @gedebokmantap">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-full font-semibold text-sm flex items-center space-x-2 hover:bg-green-500 transition shadow-md">
+                        <i class="fab fa-whatsapp text-base"></i>
+                        <span>0812-3456-7890</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none p-2 rounded-lg bg-leafGreen/50">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-leafDark border-t border-leafGreen px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchTab('beranda'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-bananaYellow font-semibold bg-leafGreen/40">Beranda</button>
+            <button onclick="switchTab('produk'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-white hover:bg-leafGreen/40">Daftar Produk</button>
+            <button onclick="switchTab('checkout'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-white hover:bg-leafGreen/40">Pesan Instan (Hari Ini)</button>
+            <button onclick="switchTab('katering'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-white hover:bg-leafGreen/40">Pesan Berjadwal / Katering</button>
+            <div class="pt-2 border-t border-leafGreen flex space-x-3">
+                <a href="https://instagram.com/gedebokmantap" target="_blank" class="flex-1 text-center bg-pink-600 text-white py-2 rounded text-sm font-medium"><i class="fab fa-instagram mr-1"></i> Instagram</a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="flex-1 text-center bg-green-600 text-white py-2 rounded text-sm font-medium"><i class="fab fa-whatsapp mr-1"></i> WhatsApp</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= TAB 1: BERANDA ================= -->
+        <section id="tab-beranda" class="tab-content space-y-12">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-r from-leafDark via-leafGreen to-chocoBrown rounded-3xl overflow-hidden text-white shadow-2xl p-6 sm:p-12 border-4 border-bananaYellow/40">
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-bananaYellow/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="inline-flex items-center space-x-2 bg-bananaYellow text-chocoDark text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-full shadow">
+                            <i class="fas fa-leaf text-green-700"></i>
+                            <span>100% Bahan Alami & Sehat</span>
+                        </span>
+                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-bananaYellow leading-tight">
+                            Gedebok Mantap
+                        </h1>
+                        <p class="text-lg sm:text-xl text-leafLight font-light leading-relaxed">
+                            Camilan Unik dari Alam, Renyah, Gurih, dan Enak. Olahan keripik pelepah pisang berkualitas tinggi yang diolah higienis untuk menemani hari santai Anda.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="switchTab('checkout')" class="bg-bananaYellow hover:bg-yellow-400 text-chocoDark font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center space-x-2">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Pesan Sekarang</span>
+                            </button>
+                            <button onclick="switchTab('produk')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl backdrop-blur border border-white/30 transition flex items-center space-x-2">
+                                <i class="fas fa-list-ul"></i>
+                                <span>Lihat Varian Rasa</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Product Image Frame -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md bg-gradient-to-b from-bananaYellow to-amber-600 p-2.5 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition duration-300">
+                            <div class="bg-amber-50 rounded-2xl overflow-hidden">
+                                <img src="WhatsApp Image 2026-09-24 at 13.07.11.jpg" alt="Keripik Gedebok Pisang - Gedebok Mantap" class="w-full h-80 sm:h-96 object-cover hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/FEF08A/78350F?text=Gedebok+Mantap';">
+                            </div>
+                            <div class="absolute -bottom-4 -left-4 bg-leafDark text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg border border-bananaYellow">
+                                ✨ Renyah & Gurih Maksimal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-200/60 custom-shadow flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-leafLight text-leafDark flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-chocoBrown">Pelepah Pisang Pilihan</h3>
+                        <p class="text-sm text-slate-600 mt-1">Dipilih dari bagian dalam pelepah pisang berkualitas yang dibersihkan secara higienis.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-200/60 custom-shadow flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-bananaLight text-bananaDark flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-chocoBrown">Renyah & Gurih</h3>
+                        <p class="text-sm text-slate-600 mt-1">Tekstur unik yang renyah di setiap gigitan dengan bumbu rempah pilihan yang meresap sempurna.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-200/60 custom-shadow flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-chocoBrown">Kirim Hari Yang Sama</h3>
+                        <p class="text-sm text-slate-600 mt-1">Pesan sebelum jam 15.00 WIB dan produk siap dikirim langsung ke alamat rumah Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: DAFTAR PRODUK & STOK ================= -->
+        <section id="tab-produk" class="tab-content hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="text-xs uppercase tracking-widest bg-leafLight text-leafDark px-3 py-1 rounded-full font-bold">Katalog Resmi</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-chocoDark">Varian Rasa & Status Stok</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Pilih varian favoritmu! Nikmati kelezatan keripik pelepah pisang dengan harga terjangkau.</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-list-container">
+                <!-- 1. Original -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-amber-200 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-amber-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/FEF08A/78350F?text=Kemasan+Original+(Cokelat+Alami)" alt="Original" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-leafDark text-white text-xs font-bold px-3 py-1 rounded-full">Rp 6.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-chocoDark">Original</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-amber-100 text-amber-800">Kemasan Alami</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Rasa gurih alami khas pelepah pisang dengan taburan garam gurih pilihan.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">45 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>15 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Original', 6000)" class="w-full bg-leafDark hover:bg-leafGreen text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Balado -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-amber-200 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-amber-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/F97316/FFFFFF?text=Kemasan+Balado+(Oranye)" alt="Balado" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">Rp 7.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-chocoDark">Balado</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-orange-100 text-orange-800">Kemasan Oranye</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Perpaduan bumbu balado pedas manis gurih yang bikin lidah bergoyang.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">30 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>20 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Balado', 7000)" class="w-full bg-leafDark hover:bg-leafGreen text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Jagung Bakar -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-amber-200 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-amber-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/EAB308/FFFFFF?text=Kemasan+Jagung+(Kuning)" alt="Jagung" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">Rp 7.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-chocoDark">Jagung Bakar</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-yellow-100 text-yellow-800">Kemasan Kuning</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Aroma khas jagung bakar manis berpadu gurih pas di setiap gigitan.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">25 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>10 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Jagung', 7000)" class="w-full bg-leafDark hover:bg-leafGreen text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Manis -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-amber-200 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-amber-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/EC4899/FFFFFF?text=Kemasan+Manis+(Pink)" alt="Manis" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full">Rp 7.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-chocoDark">Manis</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-pink-100 text-pink-800">Kemasan Pink</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Lapisan karamel gula murni yang manis legit tanpa bikin serak di tenggorokan.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">40 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>15 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Manis', 7000)" class="w-full bg-leafDark hover:bg-leafGreen text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Pedas (Kemasan Merah) -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-red-300 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-red-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/DC2626/FFFFFF?text=Kemasan+Pedas+(Merah)" alt="Pedas Nampol" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full">Rp 7.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-red-900">Pedas Nampol</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-red-200 text-red-900">Kemasan Merah</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Bumbu cabai merah pedas mantap dalam kemasan spesial warna merah membara.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">35 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>25 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Pedas', 7000)" class="w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Daun Jeruk -->
+                <div class="bg-white rounded-2xl overflow-hidden border-2 border-amber-200 custom-shadow flex flex-col justify-between">
+                    <div class="relative bg-amber-100 h-52 flex items-center justify-center overflow-hidden">
+                        <img src="https://placehold.co/400x300/166534/FFFFFF?text=Kemasan+Daun+Jeruk+(Hijau)" alt="Daun Jeruk" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Rp 7.000</span>
+                    </div>
+                    <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-chocoDark">Daun Jeruk</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800">Kemasan Hijau</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-1">Aroma segar daun jeruk purut iris halus berpadu gurih renyah nan nagih.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="flex justify-between text-xs font-medium">
+                                <span class="text-green-700"><i class="fas fa-check-circle mr-1"></i> Siap Kirim: <strong class="text-green-800">50 pcs</strong></span>
+                                <span class="text-amber-700"><i class="fas fa-clock mr-1"></i> Belum Siap: <strong>10 pcs</strong></span>
+                            </div>
+                            <button onclick="selectProductForCheckout('Daun Jeruk', 7000)" class="w-full bg-leafDark hover:bg-leafGreen text-white py-2 rounded-xl font-semibold text-sm transition shadow">
+                                Pesan Varian Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: CHECKOUT INSTAN (HARI INI) ================= -->
+        <section id="tab-checkout" class="tab-content hidden max-w-3xl mx-auto space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs uppercase tracking-widest bg-bananaLight text-chocoDark px-3 py-1 rounded-full font-bold">Fast Order</span>
+                <h2 class="text-3xl font-extrabold text-chocoDark">Checkout Pemesanan Instan</h2>
+                <p class="text-slate-600 text-sm">Pesanan akan diproses dan dikirimkan pada hari yang sama (Batas order jam 15.00 WIB).</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border-2 border-amber-200 custom-shadow">
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Nama Lengkap Penerima</label>
+                            <input type="text" id="co-name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Nomor WhatsApp / HP</label>
+                            <input type="tel" id="co-phone" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Alamat Pengiriman Lengkap</label>
+                        <textarea id="co-address" rows="3" required placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan, kota..." class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Pilih Varian Rasa</label>
+                            <select id="co-variant" onchange="updateCheckoutTotal()" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                                <option value="Original" data-price="6000">Original (Rp 6.000)</option>
+                                <option value="Balado" data-price="7000">Balado (Rp 7.000)</option>
+                                <option value="Jagung" data-price="7000">Jagung Bakar (Rp 7.000)</option>
+                                <option value="Manis" data-price="7000">Manis (Rp 7.000)</option>
+                                <option value="Pedas" data-price="7000">Pedas (Rp 7.000)</option>
+                                <option value="Daun Jeruk" data-price="7000">Daun Jeruk (Rp 7.000)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Jumlah Pesanan (Bungkus)</label>
+                            <input type="number" id="co-qty" min="1" value="2" onchange="updateCheckoutTotal()" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Metode Pembayaran</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="border-2 border-amber-200 rounded-xl p-3 text-center cursor-pointer hover:bg-amber-50 flex flex-col items-center justify-center transition">
+                                <input type="radio" name="co-payment" value="Transfer BCA" checked class="mb-1 text-leafGreen">
+                                <span class="text-xs font-bold text-chocoDark">Transfer BCA</span>
+                            </label>
+                            <label class="border-2 border-amber-200 rounded-xl p-3 text-center cursor-pointer hover:bg-amber-50 flex flex-col items-center justify-center transition">
+                                <input type="radio" name="co-payment" value="QRIS / E-Wallet" class="mb-1 text-leafGreen">
+                                <span class="text-xs font-bold text-chocoDark">QRIS / E-Wallet</span>
+                            </label>
+                            <label class="border-2 border-amber-200 rounded-xl p-3 text-center cursor-pointer hover:bg-amber-50 flex flex-col items-center justify-center transition">
+                                <input type="radio" name="co-payment" value="COD (Bayar di Tempat)" class="mb-1 text-leafGreen">
+                                <span class="text-xs font-bold text-chocoDark">COD</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Total Calculation Display -->
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-slate-500">Estimasi Total Pembayaran:</p>
+                            <p class="text-2xl font-black text-leafDark" id="co-total-display">Rp 12.000</p>
+                        </div>
+                        <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">🚀 Kirim Hari Ini</span>
+                    </div>
+
+                    <button type="submit" class="w-full bg-leafDark hover:bg-leafGreen text-white py-4 rounded-xl font-bold text-lg transition shadow-xl flex items-center justify-center space-x-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Konfirmasi Pesanan Instan</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: PEMESANAN BERJADWAL / KATERING & CUSTOM ================= -->
+        <section id="tab-katering" class="tab-content hidden max-w-3xl mx-auto space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs uppercase tracking-widest bg-leafLight text-leafDark px-3 py-1 rounded-full font-bold">Catering & Pre-Order</span>
+                <h2 class="text-3xl font-extrabold text-chocoDark">Pemesanan Berjadwal & Custom Produk</h2>
+                <p class="text-slate-600 text-sm">Cocok untuk acara keluarga, hajatan, meeting kantor, atau oleh-oleh khusus dengan tanggal & jam tiba sesuai keinginan. Dilengkapi sistem DP.</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border-2 border-amber-200 custom-shadow">
+                <form id="catering-form" onsubmit="handleCateringSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Nama Pemesan / Instansi</label>
+                            <input type="text" id="cat-name" required placeholder="Contoh: Panitia Acara / Ibu Siti" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Nomor WhatsApp Aktif</label>
+                            <input type="tel" id="cat-phone" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Alamat Pengiriman Lengkap</label>
+                        <textarea id="cat-address" rows="3" required placeholder="Alamat lengkap lokasi acara atau tujuan..." class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30"></textarea>
+                    </div>
+
+                    <!-- Custom Flavors Checkboxes -->
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Pilih Kombinasi Rasa (Custom Produk)</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Original" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Original (Rp 6k)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Balado" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Balado (Rp 7k)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Jagung" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Jagung (Rp 7k)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Manis" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Manis (Rp 7k)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Pedas" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Pedas (Rp 7k)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-amber-50/60 p-3 rounded-xl border border-amber-200 cursor-pointer">
+                                <input type="checkbox" name="cat-flavor" value="Daun Jeruk" class="rounded text-leafGreen focus:ring-leafGreen">
+                                <span class="text-sm font-medium text-chocoDark">Daun Jeruk (Rp 7k)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Total Jumlah (Bungkus)</label>
+                            <input type="number" id="cat-qty" min="10" value="20" required class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                            <span class="text-xs text-slate-500 mt-1 block">Minimal pemesanan katering 10 bungkus.</span>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Tanggal Tiba / Kirim</label>
+                            <input type="date" id="cat-date" required class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-chocoDark mb-2">Jam Tiba / Kirim</label>
+                            <input type="time" id="cat-time" required class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Catatan Tambahan / Request Khusus</label>
+                        <textarea id="cat-note" rows="2" placeholder="Misal: Kemasan diberi pita, tingkat kepedasan sedang..." class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-leafGreen bg-amber-50/30"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-chocoDark mb-2">Sistem Pembayaran DP (Uang Muka 50%)</label>
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 space-y-2">
+                            <p class="text-xs text-slate-600">Pemesanan berjadwal / katering memerlukan pembayaran DP sebesar 50% melalui Transfer Rekening Bank / QRIS, dan sisa dilunasi saat barang tiba.</p>
+                            <label class="flex items-center space-x-2 font-bold text-chocoDark">
+                                <input type="checkbox" required class="rounded text-leafGreen focus:ring-leafGreen w-5 h-5">
+                                <span class="text-sm">Saya menyetujui ketentuan pemesanan sistem DP 50%</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-chocoBrown hover:bg-chocoDark text-bananaYellow py-4 rounded-xl font-bold text-lg transition shadow-xl flex items-center justify-center space-x-2">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Ajukan Pesanan Berjadwal / Katering</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Modal Box (No native alert() used) -->
+    <div id="success-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-6 shadow-2xl border-4 border-bananaYellow transform transition scale-95 duration-300" id="modal-content-box">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-2xl font-extrabold text-chocoDark" id="modal-title">Pesanan Berhasil!</h3>
+                <p class="text-slate-600 text-sm leading-relaxed" id="modal-message">Terima kasih telah memesan Keripik Pelepah Pisang Gedebok Mantap. Pesanan Anda sedang kami proses.</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-2xl text-left text-xs space-y-1 text-slate-700 border border-amber-200" id="modal-summary-box">
+                <!-- Summary inserted dynamically -->
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="closeModal()" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 py-3 rounded-xl font-semibold text-sm transition">
+                    Tutup
+                </button>
+                <a id="modal-wa-btn" href="#" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Kirim ke WA</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-leafDark text-white mt-20 border-t border-leafGreen/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-bananaYellow rounded-full flex items-center justify-center text-chocoDark font-black text-lg">
+                            🍌
+                        </div>
+                        <span class="text-xl font-black text-bananaYellow">Gedebok Mantap</span>
+                    </div>
+                    <p class="text-leafLight/80 text-sm leading-relaxed">
+                        Camilan unik dari alam yang diolah dari pelepah pisang berkualitas. Renyah, gurih, dan penuh berkah untuk menemani setiap momen santai Anda.
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-bold text-bananaYellow text-base">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-sm text-leafLight/90">
+                        <li><button onclick="switchTab('beranda')" class="hover:text-bananaYellow transition">Beranda Utama</button></li>
+                        <li><button onclick="switchTab('produk')" class="hover:text-bananaYellow transition">Daftar Varian & Stok</button></li>
+                        <li><button onclick="switchTab('checkout')" class="hover:text-bananaYellow transition">Pemesanan Instan (Hari Ini)</button></li>
+                        <li><button onclick="switchTab('katering')" class="hover:text-bananaYellow transition">Pemesanan Berjadwal / Katering</button></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-bold text-bananaYellow text-base">Hubungi Kami</h4>
+                    <p class="text-sm text-leafLight/80"><i class="fas fa-map-marker-alt mr-2 text-bananaYellow"></i> Bangkalan, Jawa Timur, Indonesia</p>
+                    <p class="text-sm text-leafLight/80"><i class="fab fa-whatsapp mr-2 text-bananaYellow"></i> +62 812-3456-7890</p>
+                    <p class="text-sm text-leafLight/80"><i class="fab fa-instagram mr-2 text-bananaYellow"></i> @gedebokmantap</p>
+                </div>
+            </div>
+            <div class="mt-10 pt-6 border-t border-leafGreen/50 text-center text-xs text-leafLight/60">
+                &copy; 2026 Gedebok Mantap. All rights reserved. Dari Limbah Jadi Berkah.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Tab Switcher Logic
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Navigation active styles
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-bananaYellow', 'border-bananaYellow');
+                btn.classList.add('text-leafLight/90', 'border-transparent');
+            });
+
+            // Find clicked nav button
+            event && event.target && event.target.classList.contains('nav-btn') && (() => {
+                event.target.classList.remove('text-leafLight/90', 'border-transparent');
+                event.target.classList.add('text-bananaYellow', 'border-bananaYellow');
+            })();
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Select Product to populate checkout
+        function selectProductForCheckout(variantName, price) {
+            switchTab('checkout');
+            const variantSelect = document.getElementById('co-variant');
+            for (let i = 0; i < variantSelect.options.length; i++) {
+                if (variantSelect.options[i].value === variantName) {
+                    variantSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            updateCheckoutTotal();
+        }
+
+        // Update Checkout Total Calculation
+        function updateCheckoutTotal() {
+            const variantSelect = document.getElementById('co-variant');
+            const selectedOption = variantSelect.options[variantSelect.selectedIndex];
+            const price = parseInt(selectedOption.getAttribute('data-price')) || 7000;
+            const qty = parseInt(document.getElementById('co-qty').value) || 1;
+            const total = price * qty;
+            document.getElementById('co-total-display').innerText = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        // Handle Instant Checkout Form Submission
+        function handleCheckoutSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('co-name').value;
+            const phone = document.getElementById('co-phone').value;
+            const address = document.getElementById('co-address').value;
+            const variant = document.getElementById('co-variant').value;
+            const qty = document.getElementById('co-qty').value;
+            const payment = document.querySelector('input[name="co-payment"]:checked').value;
+            const total = document.getElementById('co-total-display').innerText;
+
+            const summaryHTML = `
+                <p><strong>Nama:</strong> ${name}</p>
+                <p><strong>No WA:</strong> ${phone}</p>
+                <p><strong>Pesanan:</strong> ${qty} bungkus Keripik Varian ${variant}</p>
+                <p><strong>Total:</strong> ${total} (${payment})</p>
+                <p><strong>Pengiriman:</strong> Hari yang sama</p>
+            `;
+
+            const waText = `Halo Admin Gedebok Mantap, saya ingin konfirmasi pesanan instan:%0A- Nama: ${name}%0A- No HP: ${phone}%0A- Alamat: ${address}%0A- Pesanan: ${qty}x Keripik ${variant}%0A- Total: ${total}%0A- Pembayaran: ${payment}`;
+            
+            showModal("Pesanan Instan Berhasil Dibuat!", summaryHTML, waText);
+        }
+
+        // Handle Catering / Scheduled Form Submission
+        function handleCateringSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('cat-name').value;
+            const phone = document.getElementById('cat-phone').value;
+            const address = document.getElementById('cat-address').value;
+            const qty = document.getElementById('cat-qty').value;
+            const date = document.getElementById('cat-date').value;
+            const time = document.getElementById('cat-time').value;
+            const note = document.getElementById('cat-note').value || '-';
+
+            // Collect selected flavors
+            const checkboxes = document.querySelectorAll('input[name="cat-flavor"]:checked');
+            let flavors = [];
+            checkboxes.forEach(cb => flavors.push(cb.value));
+            if(flavors.length === 0) flavors = ['Original (Default)'];
+
+            const summaryHTML = `
+                <p><strong>Pemesan:</strong> ${name}</p>
+                <p><strong>Varian Custom:</strong> ${flavors.join(', ')}</p>
+                <p><strong>Jumlah:</strong> ${qty} Bungkus (Sistem DP 50%)</p>
+                <p><strong>Jadwal Tiba:</strong> ${date} jam ${time}</p>
+            `;
+
+            const waText = `Halo Admin Gedebok Mantap, saya ingin memesan paket Katering / Berjadwal:%0A- Nama/Instansi: ${name}%0A- No HP: ${phone}%0A- Alamat: ${address}%0A- Varian: ${flavors.join(', ')}%0A- Jumlah: ${qty} bungkus%0A- Tiba: ${date} Pukul ${time}%0A- Catatan: ${note}%0A- Sistem DP 50% disetujui.`;
+
+            showModal("Pesanan Berjadwal Diajukan!", summaryHTML, waText);
+        }
+
+        // Show Success Modal without using alert()
+        function showModal(title, summaryHTML, waText) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-summary-box').innerHTML = summaryHTML;
+            document.getElementById('modal-wa-btn').href = `https://wa.me/6281234567890?text=${waText}`;
+            
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Set min date for catering date picker to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('cat-date');
+            if(dateInput) dateInput.min = today;
+        });
+    </script>
+</body>
+</html>
